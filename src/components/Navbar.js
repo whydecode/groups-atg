@@ -8,12 +8,23 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebase/Firebase";
 import { Dropdown } from "react-bootstrap";
 import { signOut } from "firebase/auth";
+import RegisterScreen, { onAuthStateChanged } from "../screens/RegisterScreen";
+import LoginScreen from "../screens/LoginScreen";
 function NavScrollExample() {
   const [user, setUser] = useState(null);
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
-    setUser(auth.currentUser);
-    console.log(auth.currentUser);
-  }, [auth.currentUser]);
+    const unsubscribe = onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setUser(authUser);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   const logOut = async () => {
     try {
       await signOut(auth);
@@ -22,8 +33,24 @@ function NavScrollExample() {
       console.error(err);
     }
   };
+  const [showComponentOne, setShowComponentOne] = useState(true);
+
+  const handleToggle = () => {
+    setShowComponentOne(!showComponentOne);
+  };
+  const handleShow = () => {
+    setShow(!show);
+  };
   return (
     <Navbar bg="light" expand="lg" fixed="top">
+      {show ? (
+        showComponentOne ? (
+          <RegisterScreen onToggle={handleToggle} onShow={handleShow} />
+        ) : (
+          <LoginScreen onToggle={handleToggle} onShow={handleShow} />
+        )
+      ) : null}
+
       <Container fluid>
         <Navbar.Brand href="/">
           <img src={logo} alt="ATGWORLD" />
@@ -51,7 +78,7 @@ function NavScrollExample() {
             />
           </Form>
           {user ? (
-            <div>
+            <div className="username">
               <p>Hi, {user.displayName}</p>
               <Dropdown className="">
                 <Dropdown.Toggle id="dropdown-basic"></Dropdown.Toggle>
@@ -61,7 +88,11 @@ function NavScrollExample() {
               </Dropdown>
             </div>
           ) : (
-            <button style={{ textTransform: "none" }} className="loginButton">
+            <button
+              style={{ textTransform: "none" }}
+              className="loginButton"
+              onClick={handleShow}
+            >
               Create account. <span>It’s free!</span>{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

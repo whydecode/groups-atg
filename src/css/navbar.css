@@ -2,23 +2,23 @@
   display: flex;
   justify-content: space-between;
 }
-.navbar-collapse{
-    padding: 10px 0 0 10%;
-    display: flex;
-    flex-wrap: wrap;
-    align-self: center;
+.navbar-collapse {
+  padding: 10px 0 0 10%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
 }
-.navbar{
-    padding: 10px 0;
+.navbar {
+  padding: 10px 0;
 }
-.navbar-brand{
-    width: 30%;
-    text-align: left;
-    padding-left: 3%;
+.navbar-brand {
+  width: 30%;
+  text-align: left;
+  padding-left: 3%;
 }
-#navbarScroll{
-    justify-content: space-between;
-    padding: 0 2%;
+#navbarScroll {
+  justify-content: space-between;
+  padding: 0 2%;
 }
 .me-2 {
   background-color: transparent;
@@ -62,4 +62,30 @@
 }
 .loginButton > span {
   color: #2f6ce5;
+}
+
+.username {
+  display: flex;
+  
+}
+.username > p{
+  margin-right: 20px;
+}
+.username > div > #dropdown-basic {
+  padding: 0;
+  margin: 0;
+  height: 20px;
+  background-color: transparent;
+}
+
+.username > div > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+@media screen and (max-width: 600px){
+  .d-flex{
+    margin-top: 15px;
+    width: 100%;
+  }
 }

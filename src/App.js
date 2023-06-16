@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <NavScrollExample />
       <HomeScreen />
-      <RegisterScreen />
+      
     </div>
   );
 }

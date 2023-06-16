@@ -2,28 +2,35 @@ import { auth, facebookProvider, googleProvider } from "../firebase/Firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
-  signOut,
   FacebookAuthProvider,
 } from "firebase/auth";
-import firebase from "firebase/compat/app";
-import { useEffect, useState } from "react";
-
-const RegisterScreen = () => {
+import { useState } from "react";
+import "../css/login.css";
+import google from "../images/google.png";
+import facebook from "../images/facebook.png";
+import loginImg from "../images/loginImg.png";
+export const onAuthStateChanged = (callback) => {
+  return auth.onAuthStateChanged(callback);
+};
+const RegisterScreen = ({ onToggle, onShow }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [curUser, setcurUser] = useState(null);
+  const [confirmPass, setConfirmPass] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const handleRegister = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Registration successful
+        // Signed in
         const user = userCredential.user;
-        setcurUser(user);
+        // ...
         console.log("User registered:", user);
       })
       .catch((error) => {
-        // Handle registration errors
-        console.log("Registration error:", error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
       });
   };
 
@@ -31,20 +38,19 @@ const RegisterScreen = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        setcurUser(user);
-        console.log(user);
+        // saveUserToFirestore(user);
+        onShow();
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
-
   const handleFacebookSignUp = () => {
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
         // The signed-in user info.
         const user = result.user;
-        setcurUser(user);
+        // saveUserToFirestore(user);
 
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
@@ -65,31 +71,85 @@ const RegisterScreen = () => {
         // ...
       });
   };
-  const logOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    console.log(auth.currentUser);
-  }, [auth]);
 
   return (
-    <div>
-      <input placeholder="Email.." onChange={(e) => setEmail(e.target.value)} />
-      <input
-        type="password"
-        placeholder="Password.."
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleRegister}> Register</button>
-      <button onClick={handleGoogleSignUp}> Signin with google</button>
-      <button onClick={handleFacebookSignUp}> Signin with Facebook</button>
+    <div className="loginDiv">
+      <div className="formDiv">
+        <button className="cross" onClick={onShow}>
+          X
+        </button>
+        <div className="loginTop">
+          <p>
+            Let's learn, share & inspire each other with our passion for
+            computer engineering. Sign up now 🤘🏼
+          </p>
+        </div>
+        <div className="loginHead">
+          <h5>Create Account</h5>
+          <p>
+            Already have an account? <a onClick={onToggle}>Sign In</a>{" "}
+          </p>
+        </div>
+        <div className="loginBottom">
+          <form action="" className="form">
+            <input
+              placeholder="First Name"
+              onChange={(e) => setFirstName(e.target.value)}
+              className="inputName"
+              required
+            />
+            <input
+              placeholder="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+              className="inputName"
+              required
+            />
+            <input
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              className="inputEmail"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              className="inputPassword"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              onChange={(e) => setConfirmPass(e.target.value)}
+              className="inputPassword"
+              required
+            />
 
-      <button onClick={logOut}> logOut</button>
+            <button
+              onClick={handleRegister}
+              disabled={!(password === confirmPass)}
+              className="registerButton"
+            >
+              {" "}
+              Create Account
+            </button>
+            <a onClick={onToggle} className="onlySmall">
+              or,Sign In
+            </a>
+            <button onClick={handleFacebookSignUp} className="socialButton">
+              <img src={facebook} alt="" />
+              Sign up with Facebook
+            </button>
+            <button onClick={handleGoogleSignUp} className="socialButton">
+              <img src={google} alt="" />
+              Sign up with Google
+            </button>
+          </form>
+          <div className="imageDiv">
+            <img src={loginImg} alt="" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
