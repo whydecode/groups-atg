@@ -23,8 +23,12 @@ const RegisterScreen = ({ onToggle, onShow }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
+        userCredential.user.updateProfile({
+          displayName: firstName + " " + lastName,
+        });
         const user = userCredential.user;
         // ...
+
         console.log("User registered:", user);
       })
       .catch((error) => {
