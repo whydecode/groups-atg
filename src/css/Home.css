@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap");
+.home {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.homeTop {
+  /* margin-top: 5%; */
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+  background-image: url("../images/homeImage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.smallJoin {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 75px;
+  width: 100%;
+  padding: 0 5%;
+  color: white;
+  font-weight: 800;
+  display: none;
+}
+.topJoinButton {
+  background-color: transparent;
+  border: 0.8px solid #ffffff;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+}
+.topContent {
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: start;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 0 2% 10%;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: calc(7px + 0.5vw);
+}
+
+.topContent > h1 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  text-transform: none;
+  font-weight: 1000;
+  color: white;
+  font-size: calc(10px + 1vw);
+}
+
+.container {
+  /* width: 75%; */
+  max-width: 1100px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.homeContent {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.homeMenu {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.menuList {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.menuList > li {
+  margin: 0 10px;
+}
+
+.menuList > li > a {
+  text-decoration: none;
+  color: #8a8a8a;
+  font-size: calc(12px + 0.1vw);
+}
+
+.dark {
+  color: #000000 !important;
+}
+.smallMenu {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+.smallMenu > div {
+  width: fit-content;
+}
+
+#dropdown-basic {
+  background-color: #f1f3f5;
+  color: #000000;
+  border-radius: 4px;
+  padding: 5px 10px;
+  text-transform: none;
+}
+#dropdown-basic:focus,
+#dropdown-basic:active {
+  outline: none !important;
+  border: none !important;
+}
+
+.dropdown-toggle::after {
+  margin-left: 15px;
+}
+
+.posts {
+  font-size: 12px;
+  font-weight: 700;
+}
+.postButton,
+.joinButton {
+  border: none;
+  margin: 0 8px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: calc(12px + 0.1vw);
+}
+.postButton {
+  background-color: #edeef0;
+}
+
+.joinButton {
+  background-color: #2f6ce5;
+  color: white;
+}
+
+.postButton:focus,
+.postButton:active,
+.joinButton:focus,
+.joinButton:active,
+.topJoinButton:focus,
+.topJoinButton:active {
+  outline: none;
+  border: none;
+}
+#dropdown-basic:active,
+#dropdown-basic:focus {
+  border: none;
+  outline: none;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.postType {
+  text-align: left;
+  padding: 0 3%;
+  color: black;
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: calc(10px + 0.2vw);
+}
+p {
+  font-family: "Noto Sans JP", sans-serif;
+}
+.postTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3%;
+  color: #000000;
+  font-weight: 800;
+}
+.postTitle > p {
+  text-align: left;
+  width: 75%;
+  font-size: calc(12px + 0.3vw);
+}
+.postTitle > .editMenu > #dropdown-basic {
+  background-color: transparent;
+}
+.postTitle > .editMenu > .dropdown-toggle::after {
+  display: none;
+}
+
+.postDesc {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #5c5c5c;
+  text-align: left;
+  padding: 0 3%;
+  font-size: calc(12px + 0.1vw);
+}
+
+.postDetail {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3%;
+  text-align: left;
+  margin-bottom: 18px;
+  color: #000000;
+  font-size: calc(9px + 0.2vw);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 800;
+}
+
+.postAuthor {
+  width: 100%;
+  padding: 0 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.postAuthor > span {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: calc(10px + 0.3vw);
+  color: #000000;
+  font-weight: 500;
+}
+.postAuthor > span > img {
+  width: 40px;
+  margin-right: 1vw;
+}
+
+.postsDiv {
+  width: 70%;
+  max-width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.post {
+  margin: 8px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  width: 100%;
+  padding: 0;
+}
+
+.visitButton {
+  width: 94%;
+  border: 0.7px solid #a9aeb8;
+  background-color: transparent;
+  margin-bottom: 15px;
+  font-size: calc(9px + 0.2vw);
+  padding: 8px 0;
+  font-weight: 800;
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 8px;
+}
+
+.postImage {
+  width: 100%;
+}
+.shareButton {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 2px;
+  margin-left: 2vw;
+}
+
+.sideDiv {
+  width: 30%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: end;
+}
+.locationDiv {
+  width: 70%;
+}
+.locationEdit {
+  color: #000000;
+  padding: 10px;
+  border-bottom: 1px solid #b8b8b8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.editButton {
+  border: none;
+  background-color: transparent;
+}
+.editButton > img {
+  width: calc(10px + 0.2vw);
+}
+.editButton:active,
+.editButton:focus,
+.shareButton:active,
+.shareButton:focus,
+.visitButton:active,
+.visitButton:focus,
+.followButton:active,
+.followButton:focus {
+  border: none;
+  outline: none;
+}
+.location {
+  border: none;
+  width: 100%;
+  padding-left: 5px;
+  font-size: calc(10px + 0.2vw);
+  background-color: transparent;
+}
+
+.location:focus,
+.location:active {
+  border: none;
+  outline: none;
+}
+
+.aboutLocation {
+  display: flex;
+  margin-top: 15px;
+  font-size: calc(7.5px + 0.1vw);
+}
+
+.aboutLocation > div {
+  text-align: justify;
+  padding: 0 5px;
+  font-family: "Noto Sans JP", sans-serif;
+  color: black;
+}
+
+.recommendationGroups {
+  margin-top: 20px;
+}
+
+.recommendationGroups > h5 > img {
+  width: calc(11px + 0.2vw);
+}
+
+.recommendationGroups > h5 {
+  width: 100%;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: calc(9px + 0.2vw);
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.recommendation {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  color: black;
+  font-size: calc(10px + 0.2vw);
+}
+.recommendation > span > img {
+  margin-right: 10px;
+}
+
+.followButton {
+  border: none;
+  background: #edeef0;
+  border-radius: 14px;
+  font-size: calc(9px + 0.2vw);
+  font-weight: 500;
+  font-family: "Noto Sans JP", sans-serif;
+  padding: 5px 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .homeMenu {
+    display: none;
+  }
+  .smallMenu {
+    display: flex;
+  }
+  .sideDiv {
+    display: none;
+  }
+  .postsDiv {
+    width: 100%;
+  }
+
+  .postDetail {
+    width: 100%;
+  }
+
+  .smallJoin {
+    display: flex;
+  }
+}

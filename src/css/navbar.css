@@ -1,0 +1,65 @@
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-collapse{
+    padding: 10px 0 0 10%;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+}
+.navbar{
+    padding: 10px 0;
+}
+.navbar-brand{
+    width: 30%;
+    text-align: left;
+    padding-left: 3%;
+}
+#navbarScroll{
+    justify-content: space-between;
+    padding: 0 2%;
+}
+.me-2 {
+  background-color: transparent;
+  padding: 5%;
+}
+.me-2::selection {
+  border: none;
+  outline: none;
+}
+.search-button {
+  background-color: transparent;
+  color: #7a7a7a;
+  padding: 10px;
+}
+.search-button > svg {
+  width: 15px;
+  height: 15px;
+}
+.search-button:hover {
+  background-color: transparent;
+  color: #363636;
+}
+.d-flex {
+  background-color: #f2f2f2;
+  border-radius: 50px;
+  width: min(350px, 75vw);
+  justify-self: center;
+}
+
+.loginButton {
+  background-color: transparent;
+  color: #2e2e2e;
+  border: none;
+  font-size: calc(12px + 0.1vw);
+  margin: 20px;
+}
+.loginButton:focus,
+.loginButton:active {
+  outline: none;
+  border: none;
+}
+.loginButton > span {
+  color: #2f6ce5;
+}
